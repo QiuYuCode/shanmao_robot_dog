@@ -1,0 +1,318 @@
+{
+	"info": {
+		"_postman_id": "e2aa7fdc-3fd0-4beb-8ef3-78b1f0a18efd",
+		"name": "温湿度云平台接口",
+		"description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "51066424",
+		"_collection_link": "https://qiuyucode-e9e86182-2811803.postman.co/workspace/%E6%B1%82%E4%BD%99's-Workspace~678f3985-2b19-4e07-82e5-6918e4b1c7a1/collection/51066424-e2aa7fdc-3fd0-4beb-8ef3-78b1f0a18efd?action=share&source=collection_link&creator=51066424"
+	},
+	"item": [
+		{
+			"name": "身份验证",
+			"item": [
+				{
+					"name": "根据用户名和密码获取Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}api/getToken/?loginName=h251225krt&password=h251225krt",
+							"host": [
+								"{{baseUrl}}api"
+							],
+							"path": [
+								"getToken",
+								""
+							],
+							"query": [
+								{
+									"key": "loginName",
+									"value": "h251225krt",
+									"description": "用户名"
+								},
+								{
+									"key": "password",
+									"value": "h251225krt",
+									"description": "密码"
+								}
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": [
+						{
+							"name": "Get data",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://www.0531yun.com/api/getToken/?loginName=h251225krt&password=h251225krt",
+									"protocol": "https",
+									"host": [
+										"www",
+										"0531yun",
+										"com"
+									],
+									"path": [
+										"api",
+										"getToken",
+										""
+									],
+									"query": [
+										{
+											"key": "loginName",
+											"value": "h251225krt",
+											"description": "用户名"
+										},
+										{
+											"key": "password",
+											"value": "h251225krt",
+											"description": "密码"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 26 Dec 2025 09:05:59 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "vary",
+									"value": "accept-encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 1000,\n    \"message\": \"获取成功\",\n    \"data\": {\n        \"token\": \"eyJhbGciOiJIUzI1NiJ9.eyJsb2dpbk5hbWUiOiJoMjUxMjI1a3J0IiwibW9kdWxlIjoiQVBJIiwiZXhwIjoxNzY2NzQ3MTU5LCJ1c2VySWQiOiI0OThiMGZkM2M4M2I2NGUzNWRhZDc4OTFlYzA2ODM4NiIsImlhdCI6MTc2NjczOTk1OSwianRpIjoidG9rZW5JZCJ9.RySVrnglJTDw8EX0qGOTKoE1uLi-qjoNtJBOaCtq4h4\",\n        \"expiration\": 1766747159\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "查询实时数据",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://www.0531yun.com/api/data/getRealTimeData?groupId",
+					"protocol": "https",
+					"host": [
+						"www",
+						"0531yun",
+						"com"
+					],
+					"path": [
+						"api",
+						"data",
+						"getRealTimeData"
+					],
+					"query": [
+						{
+							"key": "groupId",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiJ9.eyJsb2dpbk5hbWUiOiJoMjUxMjI1a3J0IiwibW9kdWxlIjoiQVBJIiwiZXhwIjoxNzY2NzQ3MTU5LCJ1c2VySWQiOiI0OThiMGZkM2M4M2I2NGUzNWRhZDc4OTFlYzA2ODM4NiIsImlhdCI6MTc2NjczOTk1OSwianRpIjoidG9rZW5JZCJ9.RySVrnglJTDw8EX0qGOTKoE1uLi-qjoNtJBOaCtq4h4",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://www.0531yun.com/api/data/getRealTimeData?groupId={{grpId}}",
+							"protocol": "https",
+							"host": [
+								"www",
+								"0531yun",
+								"com"
+							],
+							"path": [
+								"api",
+								"data",
+								"getRealTimeData"
+							],
+							"query": [
+								{
+									"key": "groupId",
+									"value": "{{grpId}}"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 26 Dec 2025 09:20:01 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "vary",
+							"value": "accept-encoding"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": 1000,\n    \"message\": \"获取成功\",\n    \"data\": [\n        {\n            \"systemCode\": \"iot\",\n            \"deviceAddr\": 10106742,\n            \"deviceName\": \"10106742\",\n            \"lat\": 0,\n            \"lng\": 0,\n            \"deviceStatus\": \"normal\",\n            \"relayStatus\": \"[{\\\"relayNo\\\":1,\\\"relayStatus\\\":0},{\\\"relayNo\\\":2,\\\"relayStatus\\\":0},{\\\"relayNo\\\":3,\\\"relayStatus\\\":0},{\\\"relayNo\\\":4,\\\"relayStatus\\\":0},{\\\"relayNo\\\":5,\\\"relayStatus\\\":0},{\\\"relayNo\\\":6,\\\"relayStatus\\\":0},{\\\"relayNo\\\":7,\\\"relayStatus\\\":0},{\\\"relayNo\\\":8,\\\"relayStatus\\\":0},{\\\"relayNo\\\":9,\\\"relayStatus\\\":0},{\\\"relayNo\\\":10,\\\"relayStatus\\\":0},{\\\"relayNo\\\":11,\\\"relayStatus\\\":0},{\\\"relayNo\\\":12,\\\"relayStatus\\\":0},{\\\"relayNo\\\":13,\\\"relayStatus\\\":0},{\\\"relayNo\\\":14,\\\"relayStatus\\\":0},{\\\"relayNo\\\":15,\\\"relayStatus\\\":0},{\\\"relayNo\\\":16,\\\"relayStatus\\\":0}]\",\n            \"relayStatusItems\": [\n                {\n                    \"relayNo\": 1,\n                    \"relayStatus\": 0\n                },\n                {\n                    \"relayNo\": 2,\n                    \"relayStatus\": 0\n                },\n                {\n                    \"relayNo\": 3,\n                    \"relayStatus\": 0\n                },\n                {\n                    \"relayNo\": 4,\n                    \"relayStatus\": 0\n                },\n                {\n                    \"relayNo\": 5,\n                    \"relayStatus\": 0\n                },\n                {\n                    \"relayNo\": 6,\n                    \"relayStatus\": 0\n                },\n                {\n                    \"relayNo\": 7,\n                    \"relayStatus\": 0\n                },\n                {\n                    \"relayNo\": 8,\n                    \"relayStatus\": 0\n                },\n                {\n                    \"relayNo\": 9,\n                    \"relayStatus\": 0\n                },\n                {\n                    \"relayNo\": 10,\n                    \"relayStatus\": 0\n                },\n                {\n                    \"relayNo\": 11,\n                    \"relayStatus\": 0\n                },\n                {\n                    \"relayNo\": 12,\n                    \"relayStatus\": 0\n                },\n                {\n                    \"relayNo\": 13,\n                    \"relayStatus\": 0\n                },\n                {\n                    \"relayNo\": 14,\n                    \"relayStatus\": 0\n                },\n                {\n                    \"relayNo\": 15,\n                    \"relayStatus\": 0\n                },\n                {\n                    \"relayNo\": 16,\n                    \"relayStatus\": 0\n                }\n            ],\n            \"dataItem\": [\n                {\n                    \"nodeId\": 1,\n                    \"registerItem\": [\n                        {\n                            \"registerId\": 1,\n                            \"data\": \"21.7\",\n                            \"value\": 21.700000762939453,\n                            \"alarmLevel\": 0,\n                            \"alarmColor\": \"ff0000\",\n                            \"alarmInfo\": \"\",\n                            \"unit\": \"℃\",\n                            \"registerName\": \"温度\"\n                        },\n                        {\n                            \"registerId\": 2,\n                            \"data\": \"30.4\",\n                            \"value\": 30.399999618530273,\n                            \"alarmLevel\": 0,\n                            \"alarmColor\": \"ff0000\",\n                            \"alarmInfo\": \"\",\n                            \"unit\": \"%\",\n                            \"registerName\": \"湿度\"\n                        }\n                    ]\n                }\n            ],\n            \"timeStamp\": 1766740789285\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "获取设备分组ID",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}api/device/getGroupList",
+					"host": [
+						"{{baseUrl}}api"
+					],
+					"path": [
+						"device",
+						"getGroupList"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}api/device/getGroupList",
+							"host": [
+								"{{baseUrl}}api"
+							],
+							"path": [
+								"device",
+								"getGroupList"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 26 Dec 2025 09:24:56 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "vary",
+							"value": "accept-encoding"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": 1000,\n    \"message\": \"获取成功\",\n    \"data\": [\n        {\n            \"groupId\": \"907a3a74429d4c9c9d5a1c3ce9ee5759\",\n            \"parentId\": \"0\",\n            \"groupName\": \"科瑞特-国网机器人巡检\"\n        }\n    ]\n}"
+				}
+			]
+		}
+	]
+}

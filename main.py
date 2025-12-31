@@ -15,7 +15,6 @@ def show_menu():
     print("2. 麦克风扬声器 (Audio)")
     print("3. 红外热成像 (Thermal Camera)")
     print("4. 温湿度模块 (Temperature & Humidity)")
-    print("5. 机械臂 (Robotic Arm)")
     print("0. 退出")
     print("=" * 60)
 
@@ -180,48 +179,14 @@ def run_temperature_humidity():
             print(f"错误: {e}")
 
 
-def run_arm():
-    """运行机械臂示例"""
-    print("\n机械臂示例")
-    print("-" * 60)
-    print("可用命令:")
-    print("  basic    - 基础控制示例（使用 V2 接口）")
-    print("  status   - 获取状态示例")
-    print("  v1       - 使用 V1 接口示例")
-    print("\n注意事项:")
-    print("  1. 使用前需要先激活 CAN 设备")
-    print("  2. 机械臂需要处在从臂模式下才能读取反馈")
-    print("\n示例:")
-    print("  python examples/arm_example.py basic [can_name]")
-    print("  python examples/arm_example.py status [can_name]")
-    print("  python examples/arm_example.py v1 [can_name]")
-    
-    choice = input("\n是否直接运行示例? (y/n): ").strip().lower()
-    if choice == 'y':
-        can_name = input("请输入 CAN 设备名称（默认: can0）: ").strip() or "can0"
-        cmd = input("请输入命令 (basic/status/v1): ").strip()
-        
-        if cmd == "basic":
-            from examples.arm_example import basic_control_example
-            basic_control_example(can_name)
-        elif cmd == "status":
-            from examples.arm_example import get_status_example
-            get_status_example(can_name)
-        elif cmd == "v1":
-            from examples.arm_example import use_v1_interface_example
-            use_v1_interface_example(can_name)
-        else:
-            print("无效命令")
-
-
 def main():
     """主函数"""
     parser = argparse.ArgumentParser(description='山猫 M20 pro 组件测试主程序')
     parser.add_argument(
         '--component',
         type=str,
-        choices=['depth', 'audio', 'thermal', 'temp', 'arm', 'all'],
-        help='直接运行指定组件测试（depth/audio/thermal/temp/arm/all）'
+        choices=['depth', 'audio', 'thermal', 'temp', 'all'],
+        help='直接运行指定组件测试（depth/audio/thermal/temp/all）'
     )
     
     args = parser.parse_args()
@@ -236,21 +201,18 @@ def main():
             run_thermal_camera()
         elif args.component == 'temp':
             run_temperature_humidity()
-        elif args.component == 'arm':
-            run_arm()
         elif args.component == 'all':
             print("运行所有组件测试...")
             run_depth_camera()
             run_audio()
             run_thermal_camera()
             run_temperature_humidity()
-            run_arm()
         return
     
     # 交互式菜单
     while True:
         show_menu()
-        choice = input("\n请选择功能 (0-5): ").strip()
+        choice = input("\n请选择功能 (0-4): ").strip()
         
         if choice == '0':
             print("\n退出程序")
@@ -263,8 +225,6 @@ def main():
             run_thermal_camera()
         elif choice == '4':
             run_temperature_humidity()
-        elif choice == '5':
-            run_arm()
         else:
             print("\n无效选择，请重新输入")
         

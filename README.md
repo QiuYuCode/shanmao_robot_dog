@@ -239,11 +239,10 @@ uv run examples/temperature_humidity_api.py
 uv add requests
 ```
 
+
 ## 四、机械臂
 
 ### Python 使用
-
-项目已包含 `examples/arm_example.py` 示例代码，使用 `piper-sdk` 控制机械臂。
 
 **系统准备：**
 
@@ -257,52 +256,9 @@ sudo ip link set can0 up type can bitrate 1000000
 ip link show can0
 ```
 
-**基本使用：**
-
-```python
-from examples.arm_example import basic_control_example, get_status_example, use_v1_interface_example
-
-# 基础控制示例（连接、获取状态和关节信息）
-# can_name 参数指定 CAN 设备名称，默认为 'can0'
-basic_control_example(can_name='can0')
-
-# 获取机械臂状态示例
-get_status_example(can_name='can0')
-
-# 使用 V1 接口示例
-use_v1_interface_example(can_name='can0')
-```
-
-**运行示例代码：**
-
-```bash
-# 基础控制示例（使用默认 can0）
-uv run examples/arm_example.py basic
-
-# 基础控制示例（指定 CAN 设备）
-uv run examples/arm_example.py basic can1
-
-# 获取状态示例
-uv run examples/arm_example.py status
-
-# 使用 V1 接口示例
-uv run examples/arm_example.py v1
-```
-
-**依赖说明：**
-
-项目使用 `piper-sdk` 模块，已包含在项目依赖中。
-
-**注意事项：**
-
-1. **CAN 设备激活**：使用前必须先激活 CAN 设备，否则会连接失败
-2. **从臂模式**：机械臂需要处在从臂模式下才能读取反馈数据
-3. **CAN 设备名称**：根据实际硬件配置修改 `can_name` 参数（默认为 'can0'）
-4. **接口选择**：推荐使用 V2 接口（`C_PiperInterface_V2`），功能更完善
-5. **连接参数**：代码中已设置默认参数（波特率 1000000），如需修改请参考代码注释
-
 **详细文档：**
 
 - [Piper 机械臂 SDK使用说明](https://github.com/agilexrobotics/piper_sdk/blob/master/README(ZH).MD)
+
 
 ## 五、灵巧手

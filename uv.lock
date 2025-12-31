@@ -252,6 +252,39 @@ wheels = [
 ]
 
 [[package]]
+name = "pymodbus"
+version = "3.8.6"
+source = { registry = "https://pypi.tuna.tsinghua.edu.cn/simple" }
+resolution-markers = [
+    "python_full_version < '3.10'",
+]
+sdist = { url = "https://pypi.tuna.tsinghua.edu.cn/packages/47/3a/a6958507d6f9c0c50f11cd299b056161c10f3cef7c227b44bc183a7e7854/pymodbus-3.8.6.tar.gz", hash = "sha256:7689b56cc3ad05a594e1486e772abb9d9646c01737935df492db04455680baf6", size = 162341, upload-time = "2025-02-10T11:53:24.596Z" }
+wheels = [
+    { url = "https://pypi.tuna.tsinghua.edu.cn/packages/84/23/8f30f094b4a00428bd3c28dd3b6a2b3715164ab85520673e197bd4bba2e7/pymodbus-3.8.6-py3-none-any.whl", hash = "sha256:b82373295fb98c9a9bf9338235240a8b2e97bcc49c0d833168cade7ba2fa90e6", size = 164366, upload-time = "2025-02-10T11:53:22.384Z" },
+]
+
+[[package]]
+name = "pymodbus"
+version = "3.11.4"
+source = { registry = "https://pypi.tuna.tsinghua.edu.cn/simple" }
+resolution-markers = [
+    "python_full_version >= '3.10'",
+]
+sdist = { url = "https://pypi.tuna.tsinghua.edu.cn/packages/2a/af/bbb716301ab9c60f0702c3cdf72cc0e373286a5648fe16bc4431400489dc/pymodbus-3.11.4.tar.gz", hash = "sha256:6910e385cb6b2f983cd457e9ecee2ff580dbb23cf3d84aefec0845e71edd606a", size = 163422, upload-time = "2025-11-30T10:36:33.717Z" }
+wheels = [
+    { url = "https://pypi.tuna.tsinghua.edu.cn/packages/02/80/84c32440949c77f2c201c38e5fa56fd8f19da31bf24df55bdbdaba67767c/pymodbus-3.11.4-py3-none-any.whl", hash = "sha256:89865929f53bd5e32b4076dde00ee86d9b8afb1686832ed74e69d55df22729c3", size = 166002, upload-time = "2025-11-30T10:36:31.992Z" },
+]
+
+[[package]]
+name = "pyserial"
+version = "3.5"
+source = { registry = "https://pypi.tuna.tsinghua.edu.cn/simple" }
+sdist = { url = "https://pypi.tuna.tsinghua.edu.cn/packages/1e/7d/ae3f0a63f41e4d2f6cb66a5b57197850f919f59e558159a4dd3a818f5082/pyserial-3.5.tar.gz", hash = "sha256:3c77e014170dfffbd816e6ffc205e9842efb10be9f58ec16d3e8675b4925cddb", size = 159125, upload-time = "2020-11-23T03:59:15.045Z" }
+wheels = [
+    { url = "https://pypi.tuna.tsinghua.edu.cn/packages/07/bc/587a445451b253b285629263eb51c2d8e9bcea4fc97826266d186f96f558/pyserial-3.5-py2.py3-none-any.whl", hash = "sha256:c4451db6ba391ca6ca299fb3ec7bae67a5c55dde170964c7a14ceefec02f2cf0", size = 90585, upload-time = "2020-11-23T03:59:13.41Z" },
+]
+
+[[package]]
 name = "python-can"
 version = "4.6.1"
 source = { registry = "https://pypi.tuna.tsinghua.edu.cn/simple" }
@@ -283,6 +316,9 @@ dependencies = [
     { name = "libusb", version = "1.0.27.post4", source = { registry = "https://pypi.tuna.tsinghua.edu.cn/simple" }, marker = "python_full_version < '3.10'" },
     { name = "libusb", version = "1.0.29.post1", source = { registry = "https://pypi.tuna.tsinghua.edu.cn/simple" }, marker = "python_full_version >= '3.10'" },
     { name = "piper-sdk" },
+    { name = "pymodbus", version = "3.8.6", source = { registry = "https://pypi.tuna.tsinghua.edu.cn/simple" }, marker = "python_full_version < '3.10'" },
+    { name = "pymodbus", version = "3.11.4", source = { registry = "https://pypi.tuna.tsinghua.edu.cn/simple" }, marker = "python_full_version >= '3.10'" },
+    { name = "pyserial" },
     { name = "python-can" },
 ]
 
@@ -291,6 +327,8 @@ requires-dist = [
     { name = "gs-usb", specifier = ">=0.3.0" },
     { name = "libusb", specifier = ">=1.0.27.post4" },
     { name = "piper-sdk", specifier = ">=0.6.1" },
+    { name = "pymodbus", specifier = ">=3.8.6" },
+    { name = "pyserial", specifier = ">=3.5" },
     { name = "python-can", specifier = ">=4.5.0" },
 ]
 

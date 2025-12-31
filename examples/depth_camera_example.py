@@ -70,9 +70,10 @@ def record_video(duration=10):
     pipeline.start(config)
     
     # 创建视频写入器
-    fourcc = cv2.VideoWriter_fourcc(*'XVID')
-    color_writer = cv2.VideoWriter('color_video.avi', fourcc, 30.0, (640, 480))
-    depth_writer = cv2.VideoWriter('depth_video.avi', fourcc, 30.0, (640, 480))
+    # 使用 mp4v 编码（与 MP4 容器格式兼容，避免 XVID 警告）
+    fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+    color_writer = cv2.VideoWriter('color_video.mp4', fourcc, 30.0, (640, 480))
+    depth_writer = cv2.VideoWriter('depth_video.mp4', fourcc, 30.0, (640, 480))
     
     try:
         import time
@@ -98,8 +99,8 @@ def record_video(duration=10):
                 depth_writer.write(depth_colormap)
         
         print("录制完成")
-        print("彩色视频已保存: color_video.avi")
-        print("深度视频已保存: depth_video.avi")
+        print("彩色视频已保存: color_video.mp4")
+        print("深度视频已保存: depth_video.mp4")
         
     finally:
         color_writer.release()
